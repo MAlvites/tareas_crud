@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Lista de Tareas</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6oIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous"
+    />
+</head>
+
+<body>
+    <!-- Container for the whole page -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Lista de Tareas</h2>
+
+        <!-- Button for adding a new task -->
+        <div class="text-end">
+            <a href="/crear" class="btn btn-primary mb-4">➕ Nuevo</a>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered align-middle">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Fecha de Vencimiento</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Looping through tasks dynamically -->
+                    {% for tarea in tareas %}
+                    <tr>
+                        <td class="text-center">{{ tarea.id }}</td>
+                        <td>{{ tarea.title }}</td>
+                        <td>{{ tarea.due_date }}</td>
+                        <td class="text-center">
+                            <span class="badge {% if tarea.completed %} bg-success {% else %} bg-danger {% endif %}">
+                                {{ "Completado" if tarea.completed else "No Completado" }}
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <a href="/{{ tarea.id }}/actualizar" class="btn btn-warning btn-sm">✏️ Actualizar</a>
+                            <a href="/{{ tarea.id }}/leer" class="btn btn-info btn-sm">👁️ Ver</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Libraries -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        crossorigin="anonymous"
+    ></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        crossorigin="anonymous"
+    ></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Actualizar Tarea</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous"
+    />
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Actualizar Tarea</h2>
+        
+        <!-- Bootstrap Card for Task Update Form -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <form action="/{{ tarea.id }}/actualizar/guardar" method="post">
+                    <!-- Title Field -->
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Título:</label>
+                        <input type="text" class="form-control" name="title" value="{{ tarea.title }}" required>
+                    </div>
+
+                    <!-- Description Field -->
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descripción:</label>
+                        <input type="text" class="form-control" name="description" value="{{ tarea.description }}" required>
+                    </div>
+
+                    <!-- Status Selection -->
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Estado:</label>
+                        <select class="form-control" name="status">
+                            <option value="completed" {% if tarea.completed %}selected{% endif %}>Completado</option>
+                            <option value="not_completed" {% if not tarea.completed %}selected{% endif %}>No Completado</option>
+                        </select>
+                    </div>
+
+                    <!-- Due Date Field -->
+                    <div class="mb-3">
+                        <label for="due_date" class="form-label">Fecha de Vencimiento:</label>
+                        <input type="date" class="form-control" name="due_date" value="{{ tarea.due_date }}" required>
+                    </div>
+
+                    <!-- Save Button -->
+                    <button type="submit" class="btn btn-success w-100">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-3">
+            <a href="/" class="btn btn-secondary">Volver al Inicio</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIeYzI3FNt0IB+5JcPq6MfR8FVpNg8Jv0fElxFgpYt7X6AjoW6hM4lbF"
+        crossorigin="anonymous"
+    ></script>
+</body>
+</html>
