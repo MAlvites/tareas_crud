@@ -29,5 +29,11 @@ Aplicacion para el manejo de una base de datos de tareas
 
 ## Correar la aplicacion
 
+Clonar el repositorio con el siguiente comando
+git clone https://github.com/MAlvites/tareas_crud.git
 Ejecutar el siguiente comando en la carpeta del repositorio
 uvicorn app:app --reload
+
+## Requerimientos
+fastapi 
+
